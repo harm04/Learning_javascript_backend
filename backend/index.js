@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 4000;
+const host = process.env.HOST ;
 
 
 //get a list of jokes
@@ -30,5 +31,5 @@ app.get("/jokes", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
+  console.log(`App listening at ${host}:${port}`);
 });
