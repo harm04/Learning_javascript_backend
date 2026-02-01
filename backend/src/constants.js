@@ -1,0 +1,1 @@
+export const DB_NAME='learning_javascript_backend_db';
