@@ -1,12 +1,13 @@
-const express = require("express");
-require("dotenv").config();
+import express from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
 const app = express();
 const port = process.env.PORT || 4000;
-const host = process.env.HOST ;
-
+const host = process.env.HOST;
 
 //get a list of jokes
-app.get("/jokes", (req, res) => {
+app.get("/api/jokes", (req, res) => {
   const jokes = [
     {
       id: 1,

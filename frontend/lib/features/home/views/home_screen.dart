@@ -13,16 +13,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<String> jokes = [];
+  
   //create a function that fetches jokes from an API
   Future<void> fetchJokes() async {
-    final response = await http.get(Uri.parse('$uri/jokes'));
+    final response = await http.get(Uri.parse('$uri/api/jokes'));
     if (response.statusCode == 200) {
-     
       List<dynamic> data = jsonDecode(response.body);
       setState(() {
         jokes = data.map((joke) => joke.toString()).toList();
       });
-      print(jokes);
     }
   }
 
