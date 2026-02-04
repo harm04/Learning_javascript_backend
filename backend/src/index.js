@@ -11,7 +11,18 @@ const host = process.env.HOST;
 
 //approach 2: connect to database first in different file, then start the server
 
-connectDB();
+connectDB()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`App listening at ${host}:${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error(
+      "Database connection error. App cannot talk to database:",
+      err
+    );
+  });
 
 // approach 1 : function to connect to database and start the server
 // (async () => {
