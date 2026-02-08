@@ -4,25 +4,17 @@ const dotenv = require("dotenv").config();
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-const cors = require("cors");
 
 //variables
 const app = express();
 const env = process.env;
 const port = env.PORT || 3000;
-const host = env.HOST;
+
 const API= env.API_URL;
 
 //middleware
 app.use(bodyParser.json());
 app.use(morgan("tiny"));
-app.use(
-  cors({
-    origin: "*", // Allow all origins for testing
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
 
 //routes
 const authRouter = require("./routes/auth");
@@ -40,6 +32,6 @@ mongoose
   });
 
 //listen to server
-app.listen(port, host, () => {
-  console.log(`Server is running on ${host}:${port}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server is running on ${port}`);
 });
