@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(morgan("tiny"));
 
 //routes
-const authRouter = require("./routes/auth");
+const authRouter = require("./routes/auth.route");
 
 app.use(`${API}/`, authRouter);
 
